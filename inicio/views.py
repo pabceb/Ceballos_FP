@@ -2,7 +2,9 @@ from django.shortcuts import render
 from django.http import HttpResponse
 
 def inicio(request):
-    return HttpResponse('Hola Mundo!')
+    # return HttpResponse('Hola Mundo!')
+    diccionario = {}
+    return render(request, 'index.html', diccionario)
 
 def pacientes(request):
     ...
