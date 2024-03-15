@@ -7,6 +7,25 @@
 </head>
 <body>
     <p>Agregar paciente</p>
-    
+    <form action={% url "agregar_paciente" %} method="POST">
+        {% csrf_token %}
+        <p>
+            Nombre
+            <input type="text" name="nombre">
+        </p>
+        <p>
+            Apellido
+            <input type="text" name="apellido">
+        </p>
+        <p>
+            DNI
+            <input type="number" name="dni">
+        </p>
+        <p>
+            Plan
+            <input type="text" name="plan">
+        </p>
+        <input type="submit" value="Agregar">
+    </form>
 </body>
 </html>
