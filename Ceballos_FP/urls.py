@@ -24,5 +24,6 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     # path('', inicio, name = 'inicio'),
     path('', include('inicio.urls')),
+    # agregar otra app ?
 
 ]
