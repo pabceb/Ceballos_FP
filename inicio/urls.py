@@ -5,6 +5,6 @@ from inicio.views import inicio, pacientes, agregar_paciente
 urlpatterns = [
     path('', inicio, name = 'inicio'),
     path('pacientes/', pacientes, name = 'pacientes'),
-    path('nuevo-paciente/', agregar_paciente, name = 'agregar_paciente'),
+    path('agregar_paciente/', agregar_paciente, name = 'agregar_paciente'),
 
 ]

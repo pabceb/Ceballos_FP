@@ -36,10 +36,8 @@ def agregar_paciente(request):
             apellido = formulario_crear_paciente.cleaned_data.get('apellido')
             dni = formulario_crear_paciente.cleaned_data.get('dni')
             plan = formulario_crear_paciente.cleaned_data.get('plan')
-            paciente_n = Paciente(nombre = nombre, apellido = apellido, dni = dni, plan = plan)
+            n_afiliado = formulario_crear_paciente.cleaned_data.get('n_afiliado')
+            paciente_n = Paciente(nombre = nombre, apellido = apellido, dni = dni, plan = plan, n_afiliado = n_afiliado)
             paciente_n.save()
-            return redirect('pacientes')
-    
-    
-    
+            return redirect('pacientes')    
     return render(request, 'agregar_paciente.html', {'formulario_crear_paciente': formulario_crear_paciente})

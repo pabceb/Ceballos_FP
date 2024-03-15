@@ -5,3 +5,4 @@ class FormularioCreacionPaciente(forms.Form):
     apellido = forms.CharField(max_length = 20)
     dni = forms.IntegerField()
     plan = forms.CharField(max_length = 10)
+    n_afiliado = forms.IntegerField()
