@@ -6,6 +6,14 @@
     <title>Pacientes</title>
 </head>
 <body>
+    <h1>Lista de pacientes</h1>
+    <ul>
+        {% for paciente in pacientes %}
+            <li>{{paciente}}</li>
+        {% endfor %}
+
+    </ul>
+        
     
 </body>
 </html>

@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from django.http import HttpResponse
+from inicio.models import Paciente
 
 def inicio(request):
     # return HttpResponse('Hola Mundo!')
@@ -7,9 +8,11 @@ def inicio(request):
     return render(request, 'index.html', diccionario)
 
 def pacientes(request):
-    ...
-    return HttpResponse('Lista de pacientes')
+    # mostrar listado de pacientes
+    pacientes = Paciente.objects.all()
+    return render(request, 'pacientes.html', {'pacientes': pacientes})
 
 def agregar_paciente(request):
-    ...
-    return HttpResponse('Agregar nuevo paciente')
+    paciente = Paciente(nombre = 'nombre1', apellido = 'ape1', dni = 12345678, plan = 'plan310')
+    paciente.save()
+    return render(request, 'agregar_paciente.html', {'paciente': paciente})

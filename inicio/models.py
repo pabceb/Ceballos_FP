@@ -7,3 +7,5 @@ class Paciente(models.Model):
     dni = models.IntegerField()
     plan = models.CharField(max_length = 10)
     
+    def __str__(self):
+        return f'Paciente: {self.nombre} {self.apellido} ({self.dni}) | Plan: {self.plan}'
