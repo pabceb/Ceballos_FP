@@ -9,7 +9,7 @@
     <p>Agregar paciente</p>
     <form action={% url "agregar_paciente" %} method="POST">
         {% csrf_token %}
-        <p>
+        {% comment %} <p>
             Nombre
             <input type="text" name="nombre">
         </p>
@@ -24,7 +24,10 @@
         <p>
             Plan
             <input type="text" name="plan">
-        </p>
+        </p> {% endcomment %}
+        <table>
+            {{formulario_crear_paciente}}
+        </table>
         <input type="submit" value="Agregar">
     </form>
 </body>
