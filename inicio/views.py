@@ -7,17 +7,18 @@ from inicio.forms import FormularioCreacionPaciente, FormularioBuscarPaciente
 def inicio(request):
     # return HttpResponse('Hola Mundo!')
     diccionario = {}
-    return render(request, 'index.html', diccionario)
+    return render(request, 'inicio/index.html', diccionario)
 
 def pacientes(request):
     # mostrar listado de pacientes
-    pacientes = Paciente.objects.all()
+    # pacientes = Paciente.objects.all()
+    # revisar si hay que crear pacientes
     formulario_buscar = FormularioBuscarPaciente(request.GET)
     if formulario_buscar.is_valid():
         afiliado = formulario_buscar.cleaned_data.get('n_afiliado')
         pacientes = Paciente.objects.filter(n_afiliado__icontains = afiliado)
         
-    return render(request, 'pacientes.html', {'pacientes': pacientes, 'formulario_buscar': formulario_buscar})
+    return render(request, 'inicio/pacientes.html', {'pacientes': pacientes, 'formulario_buscar': formulario_buscar})
 
 def agregar_paciente(request):
     # v1
@@ -46,4 +47,4 @@ def agregar_paciente(request):
             paciente_n = Paciente(nombre = nombre, apellido = apellido, dni = dni, plan = plan, n_afiliado = n_afiliado)
             paciente_n.save()
             return redirect('pacientes')    
-    return render(request, 'agregar_paciente.html', {'formulario_crear_paciente': formulario_crear_paciente})
+    return render(request, 'inicio/agregar_paciente.html', {'formulario_crear_paciente': formulario_crear_paciente})
