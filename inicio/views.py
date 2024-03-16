@@ -1,7 +1,8 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
+
 from inicio.models import Paciente
-from inicio.forms import FormularioCreacionPaciente
+from inicio.forms import FormularioCreacionPaciente, FormularioBuscarPaciente
 
 def inicio(request):
     # return HttpResponse('Hola Mundo!')
@@ -11,7 +12,12 @@ def inicio(request):
 def pacientes(request):
     # mostrar listado de pacientes
     pacientes = Paciente.objects.all()
-    return render(request, 'pacientes.html', {'pacientes': pacientes})
+    formulario_buscar = FormularioBuscarPaciente(request.GET)
+    if formulario_buscar.is_valid():
+        afiliado = formulario_buscar.cleaned_data.get('n_afiliado')
+        pacientes = Paciente.objects.filter(n_afiliado__icontains = afiliado)
+        
+    return render(request, 'pacientes.html', {'pacientes': pacientes, 'formulario_buscar': formulario_buscar})
 
 def agregar_paciente(request):
     # v1
@@ -29,8 +35,8 @@ def agregar_paciente(request):
     # return render(request, 'agregar_paciente.html', {})
     
     # v3
+    formulario_crear_paciente = FormularioCreacionPaciente(request.POST)
     if request.method == 'POST':
-        formulario_crear_paciente = FormularioCreacionPaciente(request.POST)
         if formulario_crear_paciente.is_valid():
             nombre = formulario_crear_paciente.cleaned_data.get('nombre')
             apellido = formulario_crear_paciente.cleaned_data.get('apellido')

@@ -7,13 +7,27 @@
 </head>
 <body>
     <h1>Lista de pacientes</h1>
-    <ul>
-        {% for paciente in pacientes %}
-            <li>{{paciente}}</li>
-        {% endfor %}
+    <form action={% url 'pacientes' %}>
+        {% comment %} <table>
+            {{formulario_buscar}}
+        </table> {% endcomment %}
+        {{formulario_buscar}}
+        <input type="submit" value="Buscar">
+    </form>
+    {% if pacientes %}
+        <ul>
+            {% for paciente in pacientes %}
+                <li>{{paciente}}</li>
+            {% endfor %}
+        </ul>
+    {% else %}    
+        <p>Pacientes no encontrados.</p>
+    {% endif %}
+        
+        
+    
+    <a href={% url 'agregar_paciente' %}>AGREGAR PACIENTE</a>
 
-    </ul>
-    <a href={% url 'agregar_paciente' %}>AGREGAR PACIENTE</a>    
     
 </body>
 </html>
