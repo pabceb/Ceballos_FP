@@ -7,7 +7,10 @@ from inicio.forms import FormularioCreacionPaciente, FormularioBuscarPaciente
 def inicio(request):
     # return HttpResponse('Hola Mundo!')
     diccionario = {}
-    return render(request, 'inicio/index.html', diccionario)
+    # return render(request, 'inicio/inicio.html', diccionario)
+    return render(request, 'index.html')
+
+
 
 def pacientes(request):
     # mostrar listado de pacientes
