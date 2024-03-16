@@ -8,7 +8,7 @@ def inicio(request):
     # return HttpResponse('Hola Mundo!')
     diccionario = {}
     # return render(request, 'inicio/inicio.html', diccionario)
-    return render(request, 'index.html')
+    return render(request, 'base.html')
 
 
 
