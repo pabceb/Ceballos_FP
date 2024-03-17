@@ -12,7 +12,7 @@
     {% if pacientes %}
         <ul>
             {% for paciente in pacientes %}
-                <li>{{paciente}}</li>
+                <li>{{paciente}} |<a href= {% url "ver_paciente" paciente.id %}>Detalles</a>|||</li>
             {% endfor %}
         </ul>
     {% else %}    

@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% block h1_body1 %}
+    Detalles de paciente {{paciente.id}}
+{% endblock h1_body1 %}    
+
+
+{% block main %}
+   <ul>
+        <li>Nombre: {{paciente.nombre}}</li>
+        <li>Apellido: {{paciente.apellido}}</li>
+        <li>DNI: {{paciente.dni}}</li>
+        <li># Afiliado: {{paciente.n_afiliado}}</li>
+        <li>Plan: {{paciente.plan}}</li>
+
+
+
+
+
+   </ul>
+{% endblock main %}
+
+{% block accion1 %}
+    <a class="btn btn-primary" href={% url 'inicio' %}> Paciente</a>
+{% endblock accion1 %}

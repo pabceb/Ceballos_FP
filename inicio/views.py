@@ -51,3 +51,14 @@ def agregar_paciente(request):
             paciente_n.save()
             return redirect('pacientes')    
     return render(request, 'inicio/agregar_paciente.html', {'formulario_crear_paciente': formulario_crear_paciente})
+
+# se modifica CRUD
+
+def eliminar_paciente(request):
+    ...
+
+def editar_paciente(request):
+    ...
+
+def ver_paciente(request, id_paciente):
+    return render(request, 'inicio/ver_paciente.html')
