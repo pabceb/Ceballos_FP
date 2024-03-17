@@ -1,16 +1,11 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pacientes</title>
-</head>
-<body>
-    <h1>Lista de pacientes</h1>
+{% extends "base.html" %}
+{% block h1_body1 %}
+    Lista de pacientes
+{% endblock h1_body1 %}    
+
+
+{% block main %}
     <form action={% url 'pacientes' %}>
-        {% comment %} <table>
-            {{formulario_buscar}}
-        </table> {% endcomment %}
         {{formulario_buscar}}
         <input type="submit" value="Buscar">
     </form>
@@ -23,11 +18,8 @@
     {% else %}    
         <p>No hay Pacientes cargados.</p>
     {% endif %}
-        
-        
-    
-    <a href={% url 'agregar_paciente' %}>AGREGAR PACIENTE</a>
+{% endblock main %}
 
-    
-</body>
-</html>
+{% block accion1 %}
+    <a class="btn btn-primary" href={% url 'agregar_paciente' %}>Agregar Paciente</a>
+{% endblock accion1 %}
