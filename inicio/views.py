@@ -10,8 +10,6 @@ def inicio(request):
     return render(request, 'inicio/inicio.html', diccionario)
     # return render(request, 'base.html')
 
-
-
 def pacientes(request):
     # mostrar listado de pacientes
     # pacientes = Paciente.objects.all()
@@ -61,11 +59,16 @@ def eliminar_paciente(request, id_paciente):
 
 def editar_paciente(request, id_paciente):
     paciente = Paciente.objects.get(id=id_paciente)
+    
     formulario_editar_paciente = FormularioEdicionPaciente()
+    
+    # formulario_editar_paciente = FormularioEdicionPaciente(initial={'nombre',})
+    
     if request.method == 'POST':
         formulario_editar_paciente = FormularioEdicionPaciente(request.POST)
         if formulario_editar_paciente.is_valid():
             info_nueva = formulario_editar_paciente.cleaned_data
+            
             paciente.nombre = info_nueva.get('nombre')
             paciente.apellido = info_nueva.get('apellido')
             paciente.dni = info_nueva.get('dni')
@@ -75,9 +78,7 @@ def editar_paciente(request, id_paciente):
             paciente.save()
             return redirect('pacientes')
     
-    
-    
-    return render(request, 'inicio/editar_paciente.html', {'paciente': paciente, 'formulario': formulario_editar_paciente})
+    return render(request, 'inicio/editar_paciente.html', {'paciente': paciente, 'formulario_ed': formulario_editar_paciente})
 
 def ver_paciente(request, id_paciente):
     paciente = Paciente.objects.get(id=id_paciente)    

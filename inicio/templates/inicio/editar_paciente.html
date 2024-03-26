@@ -6,7 +6,7 @@ Modificar paciente {{paciente.id}}
     <form action={% url "editar_paciente" paciente.id %} method="POST">
         {% csrf_token %}
         <table>
-            {{formulario_editar_paciente}}
+            {{formulario_ed}}
         </table>
         <input type="submit" value="Editar">
     </form>
