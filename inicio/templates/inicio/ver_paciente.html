@@ -11,14 +11,9 @@
         <li>DNI: {{paciente.dni}}</li>
         <li># Afiliado: {{paciente.n_afiliado}}</li>
         <li>Plan: {{paciente.plan}}</li>
-
-
-
-
-
    </ul>
 {% endblock main %}
 
 {% block accion1 %}
-    <a class="btn btn-primary" href={% url 'inicio' %}> Paciente</a>
+    <a class="btn btn-primary" href={% url 'pacientes' %}> Pacientes</a>
 {% endblock accion1 %}
