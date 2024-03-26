@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% block h1_body1 %}
+Modificar paciente {{paciente.id}}
+{% endblock h1_body1 %}
+{% block main %}
+    <form action={% url "editar_paciente" paciente.id %} method="POST">
+        {% csrf_token %}
+        <table>
+            {{formulario_editar_paciente}}
+        </table>
+        <input type="submit" value="Editar">
+    </form>
+{% endblock main %}
+{% block accion1 %}
+    <a class="btn btn-primary" href={% url 'inicio' %}> Home</a>
+{% endblock accion1 %}

@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect
 from django.http import HttpResponse
 
 from inicio.models import Paciente
-from inicio.forms import FormularioCreacionPaciente, FormularioBuscarPaciente
+from inicio.forms import FormularioCreacionPaciente, FormularioBuscarPaciente, FormularioEdicionPaciente
 
 def inicio(request):
     # return HttpResponse('Hola Mundo!')
@@ -59,8 +59,25 @@ def eliminar_paciente(request, id_paciente):
     paciente.delete()
     return redirect('pacientes')
 
-def editar_paciente(request):
-    ...
+def editar_paciente(request, id_paciente):
+    paciente = Paciente.objects.get(id=id_paciente)
+    formulario_editar_paciente = FormularioEdicionPaciente()
+    if request.method == 'POST':
+        formulario_editar_paciente = FormularioEdicionPaciente(request.POST)
+        if formulario_editar_paciente.is_valid():
+            info_nueva = formulario_editar_paciente.cleaned_data
+            paciente.nombre = info_nueva.get('nombre')
+            paciente.apellido = info_nueva.get('apellido')
+            paciente.dni = info_nueva.get('dni')
+            paciente.plan = info_nueva.get('plan')
+            paciente.n_afiliado = info_nueva.get('n_afiliado')
+            
+            paciente.save()
+            return redirect('pacientes')
+    
+    
+    
+    return render(request, 'inicio/editar_paciente.html', {'paciente': paciente, 'formulario': formulario_editar_paciente})
 
 def ver_paciente(request, id_paciente):
     paciente = Paciente.objects.get(id=id_paciente)    
