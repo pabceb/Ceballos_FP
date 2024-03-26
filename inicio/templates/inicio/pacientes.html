@@ -12,7 +12,12 @@
     {% if pacientes %}
         <ul>
             {% for paciente in pacientes %}
-                <li>{{paciente}} |<a href= {% url "ver_paciente" paciente.id %}>Detalles</a>|||</li>
+                <li>{{paciente}} 
+                    |<a href= {% url "ver_paciente" paciente.id %}>Detalles</a>
+                    |<a href= {% url "editar_paciente" paciente.id %}>Modificar</a>
+                    |<a href= {% url "eliminar_paciente" paciente.id %}>Eliminar</a>
+                    {% comment %} <script>alert</script> {% endcomment %}
+                </li>
             {% endfor %}
         </ul>
     {% else %}    

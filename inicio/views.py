@@ -54,8 +54,10 @@ def agregar_paciente(request):
 
 # se modifica CRUD
 
-def eliminar_paciente(request):
-    ...
+def eliminar_paciente(request, id_paciente):
+    paciente = Paciente.objects.get(id=id_paciente)
+    paciente.delete()
+    return redirect('pacientes')
 
 def editar_paciente(request):
     ...
