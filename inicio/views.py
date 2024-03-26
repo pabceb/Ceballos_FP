@@ -60,9 +60,9 @@ def eliminar_paciente(request, id_paciente):
 def editar_paciente(request, id_paciente):
     paciente = Paciente.objects.get(id=id_paciente)
     
-    formulario_editar_paciente = FormularioEdicionPaciente()
+    # formulario_editar_paciente = FormularioEdicionPaciente()
     
-    # formulario_editar_paciente = FormularioEdicionPaciente(initial={'nombre',})
+    formulario_editar_paciente = FormularioEdicionPaciente(initial={'nombre': paciente.nombre ,'apellido': paciente.apellido , 'dni': paciente.dni ,'plan': paciente.plan,'n_afiliado': paciente.n_afiliado})
     
     if request.method == 'POST':
         formulario_editar_paciente = FormularioEdicionPaciente(request.POST)
