@@ -22,8 +22,7 @@ from inicio.views import inicio
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    # path('', inicio, name = 'inicio'),
     path('', include('inicio.urls')),
-    # agregar otra app ?
+    path('usuarios/', include('usuarios.urls')),
 
 ]
