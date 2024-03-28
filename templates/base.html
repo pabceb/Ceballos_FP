@@ -9,8 +9,6 @@
         <title>FP - Ceballos</title>
         <!-- Favicon-->
         <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
-        <!-- Core theme CSS (includes Bootstrap)-->
-        {% comment %} <link href="css/styles.css" rel="stylesheet" /> {% endcomment %}
         <link rel="stylesheet" href= {% static 'css/styles.css' %}>
     </head>
     <body>
@@ -22,10 +20,29 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
                         <li class="nav-item"><a class="nav-link active" aria-current="page" href={% url "inicio" %}>Home</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#!">About Me</a></li>
-                        <li class="nav-item"><a class="nav-link" href={% url "login" %}>Login</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#!">Logout - REV</a></li>
                         <li class="nav-item"><a class="nav-link" href={% url 'pacientes' %}>Pacientes</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#!">About Me</a></li>
+                        
+                        {% if request.user.is_authenticated %}
+                            <li class="nav-item"><a class="nav-link" href="#">
+                                {% comment %} por ahora no linkea a ningun lado {% endcomment %}
+                                {{request.user.username}} {% comment %} Esto se va a usar para ver perfil de usuario {% endcomment %}
+                            </a></li> 
+                            
+                            {% comment %} <li class="nav-item"><a class="nav-link" href={% url "logout" %}>Logout - REV</a></li>                     {% endcomment %}
+                            
+                            <li class="nav-item">
+                                <form method="POST" action={% url "logout" %}>
+                                    {% csrf_token %}
+                                    <button type="submit">Logout</button>
+                                </form>
+                            </li>
+
+                        {% else %}
+                            <li class="nav-item"><a class="nav-link" href={% url "login" %}>Login</a></li>        
+                            <li class="nav-item"><a class="nav-link" href={% url "registro" %}>Registarse</a></li>
+                        {% endif %}
+
                     </ul>
                 </div>
             </div>
