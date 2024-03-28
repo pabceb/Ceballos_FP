@@ -5,15 +5,12 @@ from inicio.models import Paciente
 from inicio.forms import FormularioCreacionPaciente, FormularioBuscarPaciente, FormularioEdicionPaciente
 
 def inicio(request):
-    # return HttpResponse('Hola Mundo!')
     diccionario = {}
     return render(request, 'inicio/inicio.html', diccionario)
     # return render(request, 'base.html')
 
 def pacientes(request):
     # mostrar listado de pacientes
-    # pacientes = Paciente.objects.all()
-    # revisar si hay que crear pacientes
     formulario_buscar = FormularioBuscarPaciente(request.GET)
     if formulario_buscar.is_valid():
         afiliado = formulario_buscar.cleaned_data.get('n_afiliado')
@@ -22,21 +19,6 @@ def pacientes(request):
     return render(request, 'inicio/pacientes.html', {'pacientes': pacientes, 'formulario_buscar': formulario_buscar})
 
 def agregar_paciente(request):
-    # v1
-    # paciente = Paciente(nombre = 'nombre1', apellido = 'ape1', dni = 12345678, plan = 'plan310')
-    # paciente.save()
-    # return render(request, 'agregar_paciente.html', {'paciente': paciente})
-    # v2
-    # if request.method == 'POST':
-    #     nombre = request.POST.get('nombre')
-    #     apellido = request.POST.get('apellido')
-    #     dni = request.POST.get('dni')
-    #     plan = request.POST.get('plan')
-    #     paciente = Paciente(nombre = nombre, apellido = apellido, dni = dni, plan = plan)
-    #     paciente.save()
-    # return render(request, 'agregar_paciente.html', {})
-    
-    # v3
     formulario_crear_paciente = FormularioCreacionPaciente(request.POST)
     if request.method == 'POST':
         if formulario_crear_paciente.is_valid():
@@ -45,7 +27,8 @@ def agregar_paciente(request):
             dni = formulario_crear_paciente.cleaned_data.get('dni')
             plan = formulario_crear_paciente.cleaned_data.get('plan')
             n_afiliado = formulario_crear_paciente.cleaned_data.get('n_afiliado')
-            paciente_n = Paciente(nombre = nombre, apellido = apellido, dni = dni, plan = plan, n_afiliado = n_afiliado)
+            fecha_nacimiento = formulario_crear_paciente.cleaned_data.get('fecha_nacimiento')
+            paciente_n = Paciente(nombre = nombre, apellido = apellido, dni = dni, plan = plan, n_afiliado = n_afiliado, fecha_nacimiento = fecha_nacimiento)
             paciente_n.save()
             return redirect('pacientes')    
     return render(request, 'inicio/agregar_paciente.html', {'formulario_crear_paciente': formulario_crear_paciente})
@@ -59,10 +42,12 @@ def eliminar_paciente(request, id_paciente):
 
 def editar_paciente(request, id_paciente):
     paciente = Paciente.objects.get(id=id_paciente)
-    
-    # formulario_editar_paciente = FormularioEdicionPaciente()
-    
-    formulario_editar_paciente = FormularioEdicionPaciente(initial={'nombre': paciente.nombre ,'apellido': paciente.apellido , 'dni': paciente.dni ,'plan': paciente.plan,'n_afiliado': paciente.n_afiliado})
+    formulario_editar_paciente = FormularioEdicionPaciente(initial={'nombre': paciente.nombre ,
+                                                                    'apellido': paciente.apellido , 
+                                                                    'dni': paciente.dni ,
+                                                                    'plan': paciente.plan,
+                                                                    'n_afiliado': paciente.n_afiliado, 
+                                                                    'fecha_nacimiento': paciente.fecha_nacimiento})
     
     if request.method == 'POST':
         formulario_editar_paciente = FormularioEdicionPaciente(request.POST)
@@ -74,6 +59,7 @@ def editar_paciente(request, id_paciente):
             paciente.dni = info_nueva.get('dni')
             paciente.plan = info_nueva.get('plan')
             paciente.n_afiliado = info_nueva.get('n_afiliado')
+            paciente.fecha_nacimiento = info_nueva.get('fecha_nacimiento')
             
             paciente.save()
             return redirect('pacientes')

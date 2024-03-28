@@ -6,7 +6,7 @@ class FormularioBasePaciente(forms.Form):
     dni = forms.IntegerField(required=False)
     n_afiliado = forms.CharField(max_length = 20, required=False)
     plan = forms.CharField(max_length = 10, required=False)
-
+    fecha_nacimiento = forms.DateField(required=False)
 
 class FormularioCreacionPaciente(FormularioBasePaciente):
     ...
@@ -14,6 +14,5 @@ class FormularioCreacionPaciente(FormularioBasePaciente):
 class FormularioEdicionPaciente(FormularioBasePaciente):
     ...
     
-
 class FormularioBuscarPaciente(forms.Form):
     n_afiliado = forms.CharField(max_length = 20, required=False)
