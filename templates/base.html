@@ -22,9 +22,11 @@
                         <li class="nav-item"><a class="nav-link active" aria-current="page" href={% url "inicio" %}>Home</a></li>
                         <li class="nav-item"><a class="nav-link" href={% url 'pacientes' %}>Pacientes</a></li>
                         <li class="nav-item"><a class="nav-link" href="#!">About Me</a></li>
+
+                        <li class="nav-item"><a class="nav-link" href={% url "estudios" %}>Estudios</a></li>
                         
                         {% if request.user.is_authenticated %}
-                            <li class="nav-item"><a class="nav-link" href="#">
+                            <li class="nav-item"><a class="nav-link" href={% url "perfil" %}>
                                 {% comment %} por ahora no linkea a ningun lado {% endcomment %}
                                 {{request.user.username}} {% comment %} Esto se va a usar para ver perfil de usuario {% endcomment %}
                             </a></li> 

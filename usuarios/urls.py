@@ -8,5 +8,7 @@ urlpatterns = [
     # se utiliza una vista predefinida de django
     # con esto no hace falta generar un logout en views.py
     path('registro/', views.registro, name='registro'),
+    path('perfil/', views.perfil, name='perfil'),
+    path('perfil/editar/', views.editar_perfil, name='editar_perfil'),
     
 ]

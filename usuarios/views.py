@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth import authenticate, login as django_login
-from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.forms import UserCreationForm, UserChangeForm
 from usuarios.forms import CreacionDeUsuario
 
 def login(request):
@@ -24,3 +24,10 @@ def registro(request):
             formulario.save()
             return redirect('login')
     return render(request, 'usuarios/registro.html', {'formulario': formulario})
+
+def perfil(request):
+    return render(request, 'usuarios/perfil.html')
+
+def editar_perfil(request):
+    formulario = UserChangeForm()
+    return render(request, 'usuarios/editar_perfil.html', {'formulario': formulario})
