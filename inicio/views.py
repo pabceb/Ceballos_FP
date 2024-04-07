@@ -69,3 +69,6 @@ def editar_paciente(request, id_paciente):
 def ver_paciente(request, id_paciente):
     paciente = Paciente.objects.get(id=id_paciente)    
     return render(request, 'inicio/ver_paciente.html', {'paciente': paciente})
+
+def about(request):
+    return render(request, 'inicio/about.html')

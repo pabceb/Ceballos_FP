@@ -8,10 +8,11 @@ Login
         <table>
             {{formulario}}
         </table>
-        <input type="submit" value="Login">
+        <input class="btn btn-primary btn-sm" type="submit" value="Login">
     </form>
 {% endblock main %}
 {% block accion1 %}
-    <a class="btn btn-primary" href={% url 'inicio' %}> Home</a>
+    <a class="btn btn-primary" href={% url 'inicio' %}>Home</a>
 {% endblock accion1 %}
-
+{% block cards %}
+{% endblock cards %}

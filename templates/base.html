@@ -21,25 +21,19 @@
                     <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
                         <li class="nav-item"><a class="nav-link active" aria-current="page" href={% url "inicio" %}>Home</a></li>
                         <li class="nav-item"><a class="nav-link" href={% url 'pacientes' %}>Pacientes</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#!">About Me</a></li>
-
+                        <li class="nav-item"><a class="nav-link" href={% url "about" %}>About Me</a></li>
                         <li class="nav-item"><a class="nav-link" href={% url "estudios" %}>Estudios</a></li>
                         
                         {% if request.user.is_authenticated %}
                             <li class="nav-item"><a class="nav-link" href={% url "perfil" %}>
-                                {% comment %} por ahora no linkea a ningun lado {% endcomment %}
-                                {{request.user.username}} {% comment %} Esto se va a usar para ver perfil de usuario {% endcomment %}
+                                {{request.user.username}}
                             </a></li> 
-                            
-                            {% comment %} <li class="nav-item"><a class="nav-link" href={% url "logout" %}>Logout - REV</a></li>                     {% endcomment %}
-                            
                             <li class="nav-item">
                                 <form method="POST" action={% url "logout" %}>
                                     {% csrf_token %}
-                                    <button type="submit">Logout</button>
+                                    <button class="btn btn-primary btn-sm" type="submit">Logout</button>
                                 </form>
                             </li>
-
                         {% else %}
                             <li class="nav-item"><a class="nav-link" href={% url "login" %}>Login</a></li>        
                             <li class="nav-item"><a class="nav-link" href={% url "registro" %}>Registarse</a></li>
@@ -61,7 +55,9 @@
                             BASE
                         {% endblock h1_body1 %}
                     </h1>
+                    {% block description %}
                     <p>This is a template that is great for small businesses. It doesn't have too much fancy flare to it, but it makes a great use of the standard Bootstrap core components. Feel free to use this template for any project you want!</p>
+                    {% endblock description %}
                     {% block accion1 %}
                     <a class="btn btn-primary" href="#!">Home</a>
                     {% endblock accion1 %}
@@ -77,38 +73,42 @@
 
             {% endblock main %}
 
-
+{% block cards %}
             <!-- Content Row-->
             <div class="row gx-4 gx-lg-5">
                 <div class="col-md-4 mb-5">
                     <div class="card h-100">
                         <div class="card-body">
-                            <h2 class="card-title">Card One</h2>
-                            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rem magni quas ex numquam, maxime minus quam molestias corporis quod, ea minima accusamus.</p>
+                            <div><a href="#"></a><img src= {% static "assets/linkedin1.jpg" %} alt="Linkedin-logo" height="50px"></div>
+                            <h2 class="card-title">Linkedin</h2>
+                            <p class="card-text">{% lorem 1 p random %}</p>
                         </div>
-                        <div class="card-footer"><a class="btn btn-primary btn-sm" href="#!">More Info</a></div>
+                        <div class="card-footer"><a class="btn btn-primary btn-sm" href="#!">Linkedin</a></div>
                     </div>
                 </div>
                 <div class="col-md-4 mb-5">
                     <div class="card h-100">
                         <div class="card-body">
-                            <h2 class="card-title">Card Two</h2>
-                            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod tenetur ex natus at dolorem enim! Nesciunt pariatur voluptatem sunt quam eaque, vel, non in id dolore voluptates quos eligendi labore.</p>
+                            <div><a href="#"></a><img src= {% static "assets/gh1.jpg" %} alt="GitHub-logo" height="50px"></div>
+                            <h2 class="card-title">GitHub</h2>
+                            <p class="card-text">{% lorem 1 p  %}</p>
                         </div>
-                        <div class="card-footer"><a class="btn btn-primary btn-sm" href="#!">More Info</a></div>
+                        <div class="card-footer"><a class="btn btn-primary btn-sm" href="#!">GitHub</a></div>
                     </div>
                 </div>
                 <div class="col-md-4 mb-5">
                     <div class="card h-100">
                         <div class="card-body">
-                            <h2 class="card-title">Card Three</h2>
-                            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rem magni quas ex numquam, maxime minus quam molestias corporis quod, ea minima accusamus.</p>
+                            <div><a href="#"></a><img src= {% static "assets/whatsapp1.jpg" %} alt="Whatsapp-logo" height="50px"></div>
+                            <h2 class="card-title">Whatsapp</h2>
+                            <p class="card-text">{% lorem 1 p random %}</p>
                         </div>
-                        <div class="card-footer"><a class="btn btn-primary btn-sm" href="#!">More Info</a></div>
+                        <div class="card-footer"><a class="btn btn-primary btn-sm" href="#!">SendMessage</a></div>
                     </div>
                 </div>
             </div>
         </div>
+{% endblock cards %}
         <!-- Footer-->
         <footer class="py-5 bg-dark">
             <div class="container px-4 px-lg-5"><p class="m-0 text-center text-white">Copyright &copy; Your Website 2023</p></div>

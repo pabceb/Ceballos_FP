@@ -3,15 +3,16 @@
 Editar perfil
 {% endblock h1_body1 %}
 {% block main %}
-    <form action={% url "login" %} method="POST">
+    <form action={% url "editar_perfil" %} method="POST" enctype="multipart/form-data">
         {% csrf_token %}
         <table>
             {{formulario}}
         </table>
-        <input type="submit" value="Login">
+        <input type="submit" value="Editar">
     </form>
 {% endblock main %}
 {% block accion1 %}
-    <a class="btn btn-primary" href={% url 'inicio' %}> Home</a>
+    <a class="btn btn-primary" href={% url 'inicio' %}>Home</a>
 {% endblock accion1 %}
-
+{% block cards %}
+{% endblock cards %}
