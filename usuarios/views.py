@@ -42,6 +42,7 @@ def editar_perfil(request):
         if formulario.is_valid():
             avatar = formulario.cleaned_data.get('avatar')
             # if avatar and datos_extra.avatar:
+            # if avatar or datos_extra.avatar:
             if avatar:
                 datos_extra.avatar = avatar
             datos_extra.save()

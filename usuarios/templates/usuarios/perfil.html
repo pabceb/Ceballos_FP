@@ -8,11 +8,16 @@ Perfil de usuario {{request.user}}
         <li>Apellido: {{request.user.last_name}}</li>
         <li>Email: {{request.user.email}}</li>
         <li>Avatar:
-            <img src={{request.user.datos_extra.avatar.url}} alt="imagen_usuario" height="1000px">
+            <img src={{request.user.datos_extra.avatar.url}} >
         </li>
    </ul>
    <h5>Prueba para mostrar avatar</h5>
-   <img src={{request.user.datos_extra.avatar.url}} alt="imagen_usuario" height="1000px">
+   <div>
+    <img stlye='max-width:100px' src={{request.user.datos_extra.avatar.url}}>
+    
+    <p>{{request.user.datos_extra.avatar.url}}</p>
+    
+   </div>
    <br>
    <a class="btn btn-primary" href={% url "editar_perfil" %}>Editar Perfil</a>
    <a class="btn btn-primary" href={% url "cambiar_contrasenia" %}>Cambiar Contraseña</a>
