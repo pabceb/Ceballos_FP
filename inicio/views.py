@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
-
+from django.contrib.auth.decorators import login_required
 from inicio.models import Paciente
 from inicio.forms import FormularioCreacionPaciente, FormularioBuscarPaciente, FormularioEdicionPaciente
 
@@ -33,13 +33,16 @@ def agregar_paciente(request):
             return redirect('pacientes')    
     return render(request, 'inicio/agregar_paciente.html', {'formulario_crear_paciente': formulario_crear_paciente})
 
-# se modifica CRUD
 
+# utilizar decoradores para limitar el acceso cuando no se inicia sesion.
+
+@login_required
 def eliminar_paciente(request, id_paciente):
     paciente = Paciente.objects.get(id=id_paciente)
     paciente.delete()
     return redirect('pacientes')
 
+@login_required
 def editar_paciente(request, id_paciente):
     paciente = Paciente.objects.get(id=id_paciente)
     formulario_editar_paciente = FormularioEdicionPaciente(initial={'nombre': paciente.nombre ,

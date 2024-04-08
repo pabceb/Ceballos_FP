@@ -5,7 +5,7 @@ Eliminar Estudio RX
 {% block main %}
     <form action={% url "eliminar_estudio_rx" estudios_rx.id %} method="POST">
         {% csrf_token %}
-        <p>Confirmar la eliminación del estudio {{estudio_rx.id}}</p>
+        <p>Confirmar la eliminación del estudio {{estudios_rx.id}}</p>
         <input type="submit" value="Borrar RX">
     </form>
 {% endblock main %}

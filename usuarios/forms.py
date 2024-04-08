@@ -4,8 +4,8 @@ from django.contrib.auth.forms import UserCreationForm, UserChangeForm
 
 class CreacionDeUsuario(UserCreationForm):
     email = forms.EmailField()
-    password1 = forms.CharField(label='Contrasenia', widget=forms.PasswordInput)
-    password2 = forms.CharField(label='Repetir contrasenia', widget=forms.PasswordInput)
+    password1 = forms.CharField(label='Contraseña', widget=forms.PasswordInput)
+    password2 = forms.CharField(label='Repetir contraseña', widget=forms.PasswordInput)
     
     class Meta:
         model = User
