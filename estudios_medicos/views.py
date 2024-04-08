@@ -1,6 +1,7 @@
 from django.shortcuts import render
-from django.views.generic.edit import CreateView
+from django.views.generic.edit import CreateView, DeleteView, UpdateView
 from django.views.generic.list import ListView
+from django.views.generic.detail import DetailView
 from estudios_medicos.models import Estudios_rx
 from django.urls import reverse_lazy
 
@@ -21,3 +22,18 @@ class CrearEstudioRx(CreateView):
     template_name = "estudios_rx/crear_estudio_rx.html"
     fields = ['nombre', 'tipo', 'n_afiliado', 'profesional', 'fecha_estudio']
     success_url = reverse_lazy('estudios_rx')
+    
+class EliminarEstudioRX(DeleteView):
+    model = Estudios_rx
+    template_name = "estudios_rx/eliminar_estudio_rx.html"
+    success_url = reverse_lazy('estudios_rx')
+
+class EditarEstudioRX(UpdateView):
+    model = Estudios_rx
+    template_name = "estudios_rx/editar_estudio_rx.html"
+    fields = ['nombre', 'tipo', 'n_afiliado', 'profesional', 'fecha_estudio']
+    success_url = reverse_lazy('estudios_rx')
+    
+class DetallesEstudioRX(DetailView):
+    model = Estudios_rx
+    template_name = "estudios_rx/detalles_estudio_rx.html"

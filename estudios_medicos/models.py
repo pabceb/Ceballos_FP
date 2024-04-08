@@ -12,4 +12,7 @@ class Estudios_rx(models.Model):
     fecha_estudio = models.DateField()
     
     def __str__(self):
-        return f'Paciente: {self.nombre} {self.tipo} ({self.fecha_estudio})'
+        return f'Estudio de paciente {self.n_afiliado}: {self.nombre} {self.tipo} ({self.fecha_estudio})'
+    
+    
+    # NOTA: hay que agregar imagen

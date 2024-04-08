@@ -21,11 +21,11 @@
         <ul>
             {% for estudio in estudios_rx %}
                 <li>{{estudio}} 
-                    {% comment %}
-                    |<a href= {% url "ver_estudio" estudio.id %}>Detalles</a>
-                    |<a href= {% url "editar_estudio" estudio.id %}>Modificar</a>
-                    |<a href= {% url "eliminar_estudio" estudio.id %}>Eliminar</a> 
-                    {% endcomment %}
+                    
+                    |<a href= {% url "detalles_estudio_rx" estudio.id %}>Detalles</a>
+                    |<a href= {% url "editar_estudio_rx" estudio.id %}>Modificar</a>
+                    |<a href= {% url "eliminar_estudio_rx" estudio.id %}>Eliminar</a> 
+                    
                 </li>
 
             {% endfor %}
@@ -36,7 +36,7 @@
 {% endblock main %}
 
 {% block accion1 %}
-    <a class="btn btn-primary" href={% url 'crear_estudio_rx' %}>Nuevo EstudioRX</a>
+    <a class="btn btn-primary" href={% url 'crear_estudio_rx' %}>Nuevo Estudio RX</a>
 {% endblock accion1 %}
 {% block cards %}
 {% endblock cards %}

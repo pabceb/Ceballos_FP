@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% block h1_body1 %}
+Detalles de Estudio RX
+{% endblock h1_body1 %}
+{% block main %}
+    <h2>Detalles de {{estudios_rx.id}}</h2>
+    <ul>
+        <li>nombre: {{estudios_rx.nombre}}</li>
+        <li>Tipo: {{estudios_rx.tipo}}</li>
+        <li>Afiliado: {{estudios_rx.n_afiliado}}</li>
+        <li>Profesional: {{estudios_rx.profesional}}</li>
+        <li>Fecha: {{estudios_rx.fecha_estudio}}</li>
+   </ul>
+{% endblock main %}
+{% block cards %}
+{% endblock cards %}
+{% block accion1 %}
+    <a class="btn btn-primary" href={% url 'inicio' %}>Home</a>
+{% endblock accion1 %}
