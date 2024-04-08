@@ -7,6 +7,7 @@ Perfil de usuario {{request.user}}
         <li>Nombre: {{request.user.first_name}}</li>
         <li>Apellido: {{request.user.last_name}}</li>
         <li>Email: {{request.user.email}}</li>
+        <li>Bio: {{request.user.datos_extra.bio}}</li>
         <li>Avatar:
             <img src={{request.user.datos_extra.avatar.url}} >
         </li>
@@ -18,9 +19,13 @@ Perfil de usuario {{request.user}}
     <p>{{request.user.datos_extra.avatar.url}}</p>
     
    </div>
-   <br>
+   
    <a class="btn btn-primary" href={% url "editar_perfil" %}>Editar Perfil</a>
    <a class="btn btn-primary" href={% url "cambiar_contrasenia" %}>Cambiar Contraseña</a>
+   <br>
+   <br>
+
+
 
 {% endblock main %}
 {% block accion1 %}
