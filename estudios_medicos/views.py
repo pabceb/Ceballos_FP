@@ -23,7 +23,7 @@ class EstudiosRX(ListView):
 class CrearEstudioRx(CreateView):
     model = Estudios_rx
     template_name = "estudios_rx/crear_estudio_rx.html"
-    fields = ['nombre', 'tipo', 'n_afiliado', 'profesional', 'fecha_estudio']
+    fields = ['nombre', 'tipo', 'n_afiliado', 'profesional', 'fecha_estudio', 'imagen']
     success_url = reverse_lazy('estudios_rx')
     
 class EliminarEstudioRX(LoginRequiredMixin, DeleteView):
@@ -34,7 +34,7 @@ class EliminarEstudioRX(LoginRequiredMixin, DeleteView):
 class EditarEstudioRX(LoginRequiredMixin, UpdateView):
     model = Estudios_rx
     template_name = "estudios_rx/editar_estudio_rx.html"
-    fields = ['nombre', 'tipo', 'n_afiliado', 'profesional', 'fecha_estudio']
+    fields = ['nombre', 'tipo', 'n_afiliado', 'profesional', 'fecha_estudio', 'imagen']
     success_url = reverse_lazy('estudios_rx')
     
 class DetallesEstudioRX(DetailView):

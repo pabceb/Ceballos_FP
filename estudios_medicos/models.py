@@ -10,6 +10,7 @@ class Estudios_rx(models.Model):
     profesional = models.CharField(max_length = 20)
     # medico solicitante
     fecha_estudio = models.DateField()
+    imagen = models.ImageField(upload_to='estudios_img', null=True, blank=True)
     
     def __str__(self):
         return f'Estudio de paciente {self.n_afiliado}: {self.nombre} {self.tipo} ({self.fecha_estudio})'
